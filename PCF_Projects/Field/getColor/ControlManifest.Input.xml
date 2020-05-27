@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-	<control namespace="MyPCF" constructor="getColor" version="0.0.1" display-name-key="getColor" description-key="getColor description" control-type="standard" preview-image="res/img/preview.png">
+	<control namespace="MyPCF" constructor="getColor" version="0.0.1" display-name-key="ColorPicker" description-key="Componente que permite integrar un selector de colores a las PowerApps" control-type="standard" preview-image="res/img/preview.png">
 		<property name="CodigoColor" display-name-key="Codigo de Color" description-key="CodigoColor" of-type="SingleLine.Text" usage="bound" required="true" />
 		<resources>
 			<code path="index.ts" order="1" />
