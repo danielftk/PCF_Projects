@@ -4,7 +4,7 @@ import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button'
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { useConstCallback } from '@uifabric/react-hooks';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { ColorPicker, IColor, Stack, IStackItemStyles, DefaultPalette } from 'office-ui-fabric-react/lib/index';
+import { ColorPicker, IColor, Stack, IStackItemStyles, DefaultPalette } from 'office-ui-fabric-react/lib';
 
 export interface Iprops {
     pcfContext: ComponentFramework.Context<IInputs>,
@@ -15,7 +15,7 @@ export interface Iprops {
 export const SelectColorButton: React.FC<Iprops> = (props) => {
 
     const [color, setcolor] = React.useState(props.color);
-    const [isEditable, setisEditable] = React.useState(props.pcfContext.parameters.CodigoColor.security?.editable);
+    const [isEditable, setisEditable] = React.useState(props.pcfContext.parameters.codigoColor.security?.editable);
     const [isOpen, setIsOpen] = React.useState(false);
 
     const openPanel = useConstCallback(() => setIsOpen(true));
@@ -55,8 +55,8 @@ export const SelectColorButton: React.FC<Iprops> = (props) => {
         previewsmall: {
             "margin": "auto",
             "width": "2.1em",
-            "background-color": color,
-            "height": "2.1em"
+            "height": "2.1em",
+            "background-color": color
         }
     });
     const stackItemStyles: IStackItemStyles = {

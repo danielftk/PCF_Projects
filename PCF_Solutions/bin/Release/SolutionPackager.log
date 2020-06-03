@@ -11,7 +11,7 @@ Packing Z:\PowerApps\Community\Contributions\PCF - Community\D365UG\SuperRepo\PC
 2020-05-27 14:42:03.044 - Info	Processing Component: OrganizationSettings
 2020-05-27 14:42:03.044 - Info	Processing Component: optionsets
 2020-05-27 14:42:03.045 - Info	Processing Component: CustomControls
-2020-05-27 14:42:03.054 - Info	 - MyPCF.getColor
+2020-05-27 14:42:03.054 - Info	 - MyPCF.colorPicker
 2020-05-27 14:42:03.417 - Info	Processing Component: SolutionPluginAssemblies
 2020-05-27 14:42:03.418 - Info	Processing Component: EntityDataProviders
 2020-05-27 14:42:03.503 - Info	

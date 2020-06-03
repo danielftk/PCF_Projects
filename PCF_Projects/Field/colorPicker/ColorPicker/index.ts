@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { SelectColorButton, Iprops } from "./controls/SelectColorButton"
-import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/index';
+import { getColorFromString, IColor } from 'office-ui-fabric-react/lib';
 
-export class getColor implements ComponentFramework.StandardControl<IInputs, IOutputs> {
+export class colorPicker implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 	private _color: 				string;
 	private _notifyOutputChanged: 	() => void;
 	private _context: 				ComponentFramework.Context<IInputs>;
@@ -26,12 +26,12 @@ export class getColor implements ComponentFramework.StandardControl<IInputs, IOu
 		this._notifyOutputChanged = notifyOutputChanged;
 		this._color = "#FFFFFF";
 	}
-
+	
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		this._context = context;
-		if (context.parameters.CodigoColor.raw! != "val" || "") {
-			if (getColorFromString(context.parameters.CodigoColor.raw!)) {
-				this._color = context.parameters.CodigoColor.raw!;
+		if (context.parameters.codigoColor.raw! != "val" || "") {
+			if (getColorFromString(context.parameters.codigoColor.raw!)) {
+				this._color = context.parameters.codigoColor.raw!;
 			}
 		}
 		this._props = {
@@ -47,7 +47,7 @@ export class getColor implements ComponentFramework.StandardControl<IInputs, IOu
 
 	public getOutputs(): IOutputs {
 		return {
-			CodigoColor: this._color
+			codigoColor: this._color
 		}
 	}
 
