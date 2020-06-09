@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
-	<control namespace="ftk.PCFControls" constructor="boundedDatePicker" version="0.0.1" display-name-key="boundedDatePicker" description-key="boundedDatePicker description" control-type="standard">
-		<property name="date" display-name-key="b_date" description-key="Property_Desc_Key" of-type="DateAndTime.DateOnly" usage="bound" required="true" />
+	<!--
+		namespace			-> namespace (prototype) of the component, Only letters or numbers, Required
+		constructor			-> A method name of the Custome Component (index.ts), Required
+		control-type		-> Standard property, Optional
+		description-key		-> Localized string key-name for the description of the component, Optional
+		display-name-key	-> Localized string key-name for the description of the component, Required
+		preview-image		-> Image path that will be used on the customization screens to show a preview of the component, Optional
+		version				-> Defines the version of the component, Required
+
+	-->
+	<control 
+		namespace="ftk.PCFControls" 
+		constructor="boundedDatePicker" 
+		version="0.0.1" 
+		display-name-key="boundedDatePicker" 
+		description-key="boundedDatePicker description" 
+		control-type="standard"
+	>
+		<!--
+			name 				-> Name of the property, Required
+			display-name-key	-> Localized string key-name, Required
+			of-type				-> Defines the data type of the property, Optional 
+			of-type-group 		-> (Optional) Defines the data type-group of the property, Optional
+			usage 				-> Field (bound) or read-only values (input), Optional
+			required			-> Whether the property is required or not, Optional
+			description-key		-> Localized string key-name, Optional
+			default-value		-> The default value provided to the component. This attribute is only allowed on inputs, Optional
+		-->
+		<property 
+			name="date"
+			display-name-key="b_date" 
+			description-key="Property_Desc_Key" 
+			of-type="DateAndTime.DateOnly" 
+			usage="bound" 
+			required="true" 
+		/>
 		<property name="showWeekNumbers" display-name-key="i_restrictMinimunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
 		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
 		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type="DateAndTime.DateOnly" usage="input" required="false" />
