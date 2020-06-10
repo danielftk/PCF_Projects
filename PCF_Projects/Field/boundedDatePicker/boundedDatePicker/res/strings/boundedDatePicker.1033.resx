@@ -303,7 +303,12 @@
 	</data>
 	<data name="boundedDatePicker_labels_isOutOfBoundsErrorMessage" xml:space="preserve">
 		<value>
-			Date must be between
+			Select a valid date between:  
+		</value>
+	</data>
+	<data name="boundedDatePicker_labels_noLimitDate" xml:space="preserve">
+		<value>
+			no limit  
 		</value>
 	</data>
 	<data name="boundedDatePicker_labels_placeholder" xml:space="preserve">
@@ -314,6 +319,11 @@
 	<data name="boundedDatePicker_labels_ariaplaceholder" xml:space="preserve">
 		<value>
 			Select a date
+		</value>
+	</data>
+	<data name="boundedDatePicker_labels_clearDate" xml:space="preserve">
+		<value>
+			Clear date value
 		</value>
 	</data>
 </root>

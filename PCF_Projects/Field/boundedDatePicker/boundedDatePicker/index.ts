@@ -4,11 +4,11 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 import { BoundedDatePicker, Iprops } from "./controls/boundedDatePicker";
 
 export class boundedDatePicker implements ComponentFramework.StandardControl<IInputs, IOutputs> {
-	private _date: Date;
+	private _date: Date | undefined;
 	private _notifyOutputChanged: () => void;
 	private _container: HTMLDivElement;
 	private _props: Iprops;
-	private _updateDate(_newDate: Date) {
+	private _updateDate(_newDate: Date | undefined) {
 		this._date = _newDate;
 		this._notifyOutputChanged();
 	}
@@ -27,7 +27,7 @@ export class boundedDatePicker implements ComponentFramework.StandardControl<IIn
 		this._props = {
 			pcfContext: context,
 			updateDate: this._updateDate.bind(this),
-			date: context.parameters.date.raw || new Date(Date.now())
+			date: context.parameters.date.raw || undefined
 		}
 		ReactDOM.render(
 			React.createElement(BoundedDatePicker, this._props),

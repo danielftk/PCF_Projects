@@ -35,12 +35,25 @@
 			of-type="DateAndTime.DateOnly" 
 			usage="bound" 
 			required="true" 
+			default-value="2020-06-10T05:00:00"
 		/>
-		<property name="showWeekNumbers" display-name-key="i_restrictMinimunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
-		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
-		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type="DateAndTime.DateOnly" usage="input" required="false" />
-		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" />
-		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type="DateAndTime.DateOnly" usage="input" required="false" />
+		<type-group name="RestrictDate-Parameter">
+			<type>DateAndTime.DateOnly</type>
+			<type>SingleLine.Text</type>
+		</type-group>			
+		<property 
+			name="showWeekNumbers" 
+			display-name-key="i_restrictMinimunDate" 
+			description-key="Property_Desc_Key" 
+			of-type="TwoOptions" 
+			usage="input" 
+			required="true" 
+			default-value="false"
+		/>
+		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-06-01T05:00:00"/>
+		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="false" />
+		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-06-30T05:00:00"/>
 		<resources>
 			<code path="index.ts" order="1" />
 			<resx path="res/strings/boundedDatePicker.1033.resx" version="1.0.0" />
