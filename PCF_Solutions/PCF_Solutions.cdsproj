@@ -8,7 +8,7 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Solution.props')" />
 
   <PropertyGroup>
-    <ProjectGuid>eb46cf9a-4c91-475b-aa05-c7528802235a</ProjectGuid>
+    <ProjectGuid>d4884d3b-12e5-47cb-a13d-a8a1d1916d04</ProjectGuid>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <!--Remove TargetFramework when this is available in 16.1-->
     <TargetFramework>net462</TargetFramework>
@@ -40,7 +40,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\PCF_Projects\Field\Field.pcfproj" />
+    <ProjectReference Include="..\PCF_Projects\Field\boundedDatePicker\SuperRepo.pcfproj" />
+    <ProjectReference Include="..\PCF_Projects\Field\colorPicker\Field.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />

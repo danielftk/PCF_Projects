@@ -24,11 +24,11 @@ export interface Iprops {
 
 export const BoundedDatePicker: React.FC<Iprops> = (props) => {
   const _pcfContext = props.pcfContext;
-  const _resources = props.pcfContext.resources;
+  //const _resources = props.pcfContext.resources;
   const _pcfParameters = props.pcfContext.parameters;
+  const _dateStrings = props.pcfContext.userSettings.dateFormattingInfo;
 
   let _minDate: Date | undefined = undefined;
-  debugger;
   if (_pcfParameters.restrictMinimunDate.raw) {
     if (_pcfParameters.minDate.type == "SingleLine.Text") {
       if (_pcfParameters.minDate.raw == "TODAY") {
@@ -57,37 +57,24 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
     }
   }
 
-  const _months: string[] = [];
-  const _shortMonths: string[] = [];
-  const _days: string[] = [];
-  const _shortdays: string[] = [];
-
   const firstDayOfWeek = DayOfWeek.Monday;
-  for (let index = 1; index <= 12; index++) {
-    _months[index - 1] = _resources.getString("boundedDatePicker_labels_month_" + index + "_name").trim();
-    _shortMonths[index - 1] = _resources.getString("boundedDatePicker_labels_month_" + index + "_shortname").trim();
-  }
-  for (let index = 1; index <= 7; index++) {
-    _days[index - 1] = _resources.getString("boundedDatePicker_labels_day_" + index + "_name").trim();
-    _shortdays[index - 1] = _resources.getString("boundedDatePicker_labels_day_" + index + "_shortname").trim();
-  }
 
   const DayPickerStrings: IDatePickerStrings = {
-    months: _months,
-    shortMonths: _shortMonths,
-    days: _days,
-    shortDays: _shortdays,
-    goToToday: _resources.getString("boundedDatePicker_labels_goToToday").trim(),
-    prevMonthAriaLabel: _resources.getString("boundedDatePicker_labels_prevMonthAriaLabel").trim(),
-    nextMonthAriaLabel: _resources.getString("boundedDatePicker_labels_nextMonthAriaLabel").trim(),
-    prevYearAriaLabel: _resources.getString("boundedDatePicker_labels_prevYearAriaLabel").trim(),
-    nextYearAriaLabel: _resources.getString("boundedDatePicker_labels_nextYearAriaLabel").trim(),
-    closeButtonAriaLabel: _resources.getString("boundedDatePicker_labels_closeButtonAriaLabel").trim(),
-    isRequiredErrorMessage: _resources.getString("boundedDatePicker_labels_isRequiredErrorMessage").trim(),
-    invalidInputErrorMessage: _resources.getString("boundedDatePicker_labels_invalidInputErrorMessage").trim(),
-    isOutOfBoundsErrorMessage: _resources.getString("boundedDatePicker_labels_isOutOfBoundsErrorMessage").trim() + ` ${_minDate == undefined ? _resources.getString("boundedDatePicker_labels_noLimitDate").trim() : _minDate!?.toLocaleDateString()} - ${_maxDate == undefined ? _resources.getString("boundedDatePicker_labels_noLimitDate").trim() : _maxDate!?.toLocaleDateString()}`,
-  };
+    months: _dateStrings.monthGenitiveNames,
+    shortMonths: _dateStrings.abbreviatedMonthGenitiveNames,
+    days: _dateStrings.dayNames,
+    shortDays: _dateStrings.shortestDayNames,
+    goToToday: "Go to today",//_resources.getString("boundedDatePicker_labels_goToToday").trim(),
+    prevMonthAriaLabel: "Go to previous month",// _resources.getString("boundedDatePicker_labels_prevMonthAriaLabel").trim(),
+    nextMonthAriaLabel: "Go to next month",//_resources.getString("boundedDatePicker_labels_nextMonthAriaLabel").trim(),
+    prevYearAriaLabel: "Go to previous year",//_resources.getString("boundedDatePicker_labels_prevYearAriaLabel").trim(),
+    nextYearAriaLabel: "Go to next year",//_resources.getString("boundedDatePicker_labels_nextYearAriaLabel").trim(),
+    closeButtonAriaLabel: "Close date picker",// _resources.getString("boundedDatePicker_labels_closeButtonAriaLabel").trim(),
+    isRequiredErrorMessage: "Field is required.",//_resources.getString("boundedDatePicker_labels_isRequiredErrorMessage").trim(),
+    invalidInputErrorMessage: "Invalid date format.",//_resources.getString("boundedDatePicker_labels_invalidInputErrorMessage").trim(),
+    isOutOfBoundsErrorMessage: `Select a valid date between:  ${_minDate == undefined ? "No limit" : _minDate!?.toLocaleDateString()} - ${_maxDate == undefined ? "No limit" : _maxDate!?.toLocaleDateString()}`,
 
+  };
   const [showWeekNumbers, setshowWeekNumbers] = React.useState(_pcfParameters.showWeekNumbers.raw);
   React.useEffect(() => {
     setshowWeekNumbers(_pcfParameters.showWeekNumbers.raw);
@@ -118,8 +105,8 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
           isRequired={false}
           firstDayOfWeek={firstDayOfWeek}
           strings={DayPickerStrings}
-          placeholder={_resources.getString("boundedDatePicker_labels_placeholder").trim()}
-          ariaLabel={_resources.getString("boundedDatePicker_labels_ariaplaceholder").trim()}
+          placeholder={"Select a date..."/*_resources.getString("boundedDatePicker_labels_placeholder").trim()*/}
+          ariaLabel={"Select a date"/*_resources.getString("boundedDatePicker_labels_ariaplaceholder").trim()*/}
           minDate={_minDate}
           maxDate={_maxDate}
           allowTextInput={false}
@@ -132,8 +119,8 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
         <IconButton
           iconProps={emojiIcon}
           className={controlClass.iconButton}
-          title={_resources.getString("boundedDatePicker_labels_clearDate").trim()}
-          ariaLabel={_resources.getString("boundedDatePicker_labels_clearDate").trim()}
+          title={"Clear date"/*_resources.getString("boundedDatePicker_labels_clearDate").trim()*/}
+          ariaLabel={"Clear date"/*_resources.getString("boundedDatePicker_labels_clearDate").trim()*/}
           disabled={date?.toString() == undefined ? true : false}
           onClick={() => { props.updateDate(undefined); }}
           checked={false} />
