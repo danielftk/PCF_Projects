@@ -13,16 +13,16 @@
     <Managed>2</Managed>
     <Publisher>
       <!-- Unique Publisher Name of Cds Solution -->
-      <UniqueName>danielmontiel</UniqueName>
+      <UniqueName>DanielMontielftk</UniqueName>
       <LocalizedNames>
         <!-- Localized Cds Publisher Name in language code-->
-        <LocalizedName description="danielmontiel" languagecode="1033" />
+        <LocalizedName description="DanielMontielftk" languagecode="1033" />
       </LocalizedNames>
       <Descriptions>
         <!-- Description of Cds Publisher in language code -->
-        <Description description="danielmontiel" languagecode="1033" />
+        <Description description="DanielMontielftk" languagecode="1033" />
       </Descriptions>
-      <EMailAddress xsi:nil="true">ftk.montiel@gmail.com</EMailAddress>
+      <EMailAddress xsi:nil="true"></EMailAddress>
       <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
       <!-- Customization Prefix for the Cds Publisher-->
       <CustomizationPrefix>ftk</CustomizationPrefix>
@@ -33,9 +33,9 @@
         <Address>
           <AddressNumber>1</AddressNumber>
           <AddressTypeCode>1</AddressTypeCode>
-          <City xsi:nil="true">Monterrey</City>
+          <City xsi:nil="true"></City>
           <County xsi:nil="true"></County>
-          <Country xsi:nil="true">Mexico</Country>
+          <Country xsi:nil="true"></Country>
           <Fax xsi:nil="true"></Fax>
           <FreightTermsCode xsi:nil="true"></FreightTermsCode>
           <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
@@ -49,7 +49,7 @@
           <PostOfficeBox xsi:nil="true"></PostOfficeBox>
           <PrimaryContactName xsi:nil="true"></PrimaryContactName>
           <ShippingMethodCode>1</ShippingMethodCode>
-          <StateOrProvince xsi:nil="true">Nuevo Leon</StateOrProvince>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
           <Telephone1 xsi:nil="true"></Telephone1>
           <Telephone2 xsi:nil="true"></Telephone2>
           <Telephone3 xsi:nil="true"></Telephone3>

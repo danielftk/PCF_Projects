@@ -24,6 +24,7 @@ export class boundedDatePicker implements ComponentFramework.StandardControl<IIn
 
 	public updateView(context: ComponentFramework.Context<IInputs>): void {
 		console.log("UpdateView");
+		console.log(context);
 		this._props = {
 			pcfContext: context,
 			updateDate: this._updateDate.bind(this),
