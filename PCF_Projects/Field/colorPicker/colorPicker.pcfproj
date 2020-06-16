@@ -8,8 +8,8 @@
   <Import Project="$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props" Condition="Exists('$(PowerAppsTargetsPath)\Microsoft.PowerApps.VisualStudio.Pcf.props')"/>
   
   <PropertyGroup>
-    <Name>Field</Name>
-    <ProjectGuid>7cde76c0-abcb-4ccd-a618-c171c1e8837c</ProjectGuid>
+    <Name>colorPicker</Name>
+    <ProjectGuid>64131870-5747-4cdd-8c23-ebbed77dbc7b</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
   </PropertyGroup>
 

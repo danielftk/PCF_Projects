@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-	<control 
-	namespace="ftk.PCFControls" 
-	constructor="colorPicker" version="0.0.1" 
-	display-name-key="/ftk - ColorPicker" 
-	description-key="Componente que permite integrar un selector de colores a PowerApps" 
-	control-type="standard" 
-	preview-image="res/img/preview.png">
-		<property name="codigoColor" display-name-key="Codigo de Color" description-key="codigoColor" of-type="SingleLine.Text" usage="bound" required="true" />
-		<resources>
-			<code path="index.ts" order="1" />
-			<img path="res/img/preview.png" />
-		</resources>
-	</control>
+  <control 
+    namespace="ftk.PCFControls" 
+    constructor="colorPicker" 
+    version="0.0.1" 
+    display-name-key="colorPicker" 
+    description-key="colorPicker description" 
+    control-type="standard">
+    <property name="codigoColor" display-name-key="Codigo de Color" description-key="codigoColor" of-type="SingleLine.Text" usage="bound" required="true" />
+    <resources>
+      <code path="index.ts" order="1"/>
+      <img path="res/img/preview.png" />
+    </resources>
+  </control>
 </manifest>

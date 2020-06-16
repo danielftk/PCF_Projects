@@ -35,11 +35,10 @@
 			of-type="DateAndTime.DateOnly" 
 			usage="bound" 
 			required="true" 
-			default-value="2020-06-10T05:00:00"
 		/>
 		<type-group name="RestrictDate-Parameter">
 			<type>DateAndTime.DateOnly</type>
-			<type>SingleLine.Text</type>
+			<type>Whole.None</type>
 		</type-group>			
 		<property 
 			name="showWeekNumbers" 
@@ -50,10 +49,10 @@
 			required="true" 
 			default-value="false"
 		/>
-		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="false" />
-		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-06-01T05:00:00"/>
-		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="false" />
-		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-06-30T05:00:00"/>
+		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="true"/>
+		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-01-01T15:00:00"/>
+		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="true"/>
+		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-12-30T15:00:00"/>
 		<resources>
 			<code path="index.ts" order="1" />
 		</resources>

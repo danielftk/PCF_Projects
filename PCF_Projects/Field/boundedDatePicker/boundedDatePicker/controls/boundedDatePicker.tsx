@@ -3,6 +3,7 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { Stack, IconButton, IIconProps } from 'office-ui-fabric-react/lib';
+import { addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { IInputs } from "../generated/ManifestTypes";
 initializeIcons();
 
@@ -24,38 +25,28 @@ export interface Iprops {
 
 export const BoundedDatePicker: React.FC<Iprops> = (props) => {
   const _pcfContext = props.pcfContext;
-  //const _resources = props.pcfContext.resources;
   const _pcfParameters = props.pcfContext.parameters;
   const _dateStrings = props.pcfContext.userSettings.dateFormattingInfo;
 
   let _minDate: Date | undefined = undefined;
   if (_pcfParameters.restrictMinimunDate.raw) {
-    if (_pcfParameters.minDate.type == "SingleLine.Text") {
-      if (_pcfParameters.minDate.raw == "TODAY") {
-        _minDate = new Date(Date.now());
-      }
-      else {
-        console.log("BoundedDatePicker PCF -- MinimunDate input parameter has no supported value");
-      }
+    if (_pcfParameters.minDate.type == "Whole.None") {
+      _minDate = addDays(new Date(Date.now()), _pcfParameters.minDate.raw!);
     }
     else {
       _minDate = _pcfParameters.minDate.raw!
     }
   }
-  let _maxDate: Date | undefined;
+  let _maxDate: Date | undefined = undefined;
   if (_pcfParameters.restrictMaximunDate.raw) {
-    if (_pcfParameters.maxDate.type == "SingleLine.Text") {
-      if (_pcfParameters.maxDate.raw == "TODAY") {
-        _maxDate = new Date(Date.now());
-      }
-      else {
-        console.log("BoundedDatePicker PCF -- MinimunDate input parameter has no supported value");
-      }
+    if (_pcfParameters.maxDate.type == "Whole.None") {
+      _maxDate = addDays(new Date(Date.now()), _pcfParameters.maxDate.raw!);
     }
     else {
       _maxDate = _pcfParameters.maxDate.raw!
     }
   }
+
 
   const firstDayOfWeek = DayOfWeek.Monday;
 
@@ -72,7 +63,7 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
     closeButtonAriaLabel: "Close date picker",// _resources.getString("boundedDatePicker_labels_closeButtonAriaLabel").trim(),
     isRequiredErrorMessage: "Field is required.",//_resources.getString("boundedDatePicker_labels_isRequiredErrorMessage").trim(),
     invalidInputErrorMessage: "Invalid date format.",//_resources.getString("boundedDatePicker_labels_invalidInputErrorMessage").trim(),
-    isOutOfBoundsErrorMessage: `Select a valid date between:  ${_minDate == undefined ? "No limit" : _minDate!?.toLocaleDateString()} - ${_maxDate == undefined ? "No limit" : _maxDate!?.toLocaleDateString()}`,
+    isOutOfBoundsErrorMessage: `Select a valid date between  ${_minDate == undefined ? "No limit" : _minDate!?.toLocaleDateString()} - ${_maxDate == undefined ? "No limit" : _maxDate!?.toLocaleDateString()}`,
 
   };
   const [showWeekNumbers, setshowWeekNumbers] = React.useState(_pcfParameters.showWeekNumbers.raw);
