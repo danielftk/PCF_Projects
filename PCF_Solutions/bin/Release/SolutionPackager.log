@@ -138,3 +138,43 @@ Packing Z:\PowerApps\Community\Contributions\PCF - Community\D365UG\SuperRepo\PC
 2020-06-16 23:00:02.147 - Info	
 Managed Pack complete.
 
+2020-06-17 11:34:21.849 - Info	
+Packing Z:\PowerApps\Community\Contributions\PCF - Community\D365UG\SuperRepo\PCF_Projects\PCF_Solutions\obj\Release\Metadata to bin\Release\PCF_Solutions.zip
+
+2020-06-17 11:34:21.910 - Info	Processing Component: Entities
+2020-06-17 11:34:21.917 - Info	Processing Component: Roles
+2020-06-17 11:34:21.926 - Info	Processing Component: Workflows
+2020-06-17 11:34:21.927 - Info	Processing Component: FieldSecurityProfiles
+2020-06-17 11:34:21.928 - Info	Processing Component: Templates
+2020-06-17 11:34:21.930 - Info	Processing Component: EntityMaps
+2020-06-17 11:34:21.930 - Info	Processing Component: EntityRelationships
+2020-06-17 11:34:21.966 - Info	Processing Component: OrganizationSettings
+2020-06-17 11:34:21.967 - Info	Processing Component: optionsets
+2020-06-17 11:34:21.968 - Info	Processing Component: CustomControls
+2020-06-17 11:34:22.048 - Info	 - ftk.PCFControls.boundedDatePicker
+2020-06-17 11:34:22.050 - Info	 - ftk.PCFControls.colorPicker
+2020-06-17 11:34:23.595 - Info	Processing Component: SolutionPluginAssemblies
+2020-06-17 11:34:23.597 - Info	Processing Component: EntityDataProviders
+2020-06-17 11:34:23.878 - Info	
+Managed Pack complete.
+
+2020-06-17 12:02:10.988 - Info	
+Packing Z:\PowerApps\Community\Contributions\PCF - Community\D365UG\SuperRepo\PCF_Projects\PCF_Solutions\obj\Release\Metadata to bin\Release\PCF_Solutions.zip
+
+2020-06-17 12:02:11.012 - Info	Processing Component: Entities
+2020-06-17 12:02:11.018 - Info	Processing Component: Roles
+2020-06-17 12:02:11.024 - Info	Processing Component: Workflows
+2020-06-17 12:02:11.025 - Info	Processing Component: FieldSecurityProfiles
+2020-06-17 12:02:11.025 - Info	Processing Component: Templates
+2020-06-17 12:02:11.027 - Info	Processing Component: EntityMaps
+2020-06-17 12:02:11.027 - Info	Processing Component: EntityRelationships
+2020-06-17 12:02:11.037 - Info	Processing Component: OrganizationSettings
+2020-06-17 12:02:11.038 - Info	Processing Component: optionsets
+2020-06-17 12:02:11.039 - Info	Processing Component: CustomControls
+2020-06-17 12:02:11.061 - Info	 - ftk.PCFControls.boundedDatePicker
+2020-06-17 12:02:11.064 - Info	 - ftk.PCFControls.colorPicker
+2020-06-17 12:02:12.630 - Info	Processing Component: SolutionPluginAssemblies
+2020-06-17 12:02:12.631 - Info	Processing Component: EntityDataProviders
+2020-06-17 12:02:12.917 - Info	
+Managed Pack complete.
+
