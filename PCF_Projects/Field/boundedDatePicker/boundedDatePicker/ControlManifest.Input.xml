@@ -42,16 +42,16 @@
 		</type-group>			
 		<property 
 			name="showWeekNumbers" 
-			display-name-key="i_restrictMinimunDate" 
+			display-name-key="i_showWeekNumbers" 
 			description-key="Property_Desc_Key" 
 			of-type="TwoOptions" 
 			usage="input" 
 			required="true" 
-			default-value="false"
+			default-value="0"
 		/>
-		<property name="restrictMinimunDate" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="true"/>
+		<property name="restrictMinimunDate" display-name-key="i_restrictMinimunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="0"/>
 		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-01-01T15:00:00"/>
-		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="true"/>
+		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="0"/>
 		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-12-30T15:00:00"/>
 		<resources>
 			<code path="index.ts" order="1" />
