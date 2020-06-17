@@ -11,6 +11,7 @@ const controlClass = mergeStyleSets({
   datePicker: {
     margin: '5px',
     maxWidth: '600px',
+    "width": "100%"
   },
   iconButton: {
     margin: '5px 0px 5px 0px',
@@ -27,9 +28,35 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
   const _pcfContext = props.pcfContext;
   const _pcfParameters = props.pcfContext.parameters;
   const _dateStrings = props.pcfContext.userSettings.dateFormattingInfo;
+  const firstDayOfWeek = DayOfWeek.Monday;
+
+  const [date, setDate] = React.useState(props.date);
+  React.useEffect(() => {
+    setDate(_pcfParameters.date.raw!);
+  }, [_pcfParameters.date])
+
+  const [showWeekNumbers, setshowWeekNumbers] = React.useState(_pcfParameters.showWeekNumbers.raw! == "true" ? true : false);
+  React.useEffect(() => {
+    setshowWeekNumbers(_pcfParameters.showWeekNumbers.raw! == "true" ? true : false);
+  }, [_pcfParameters.showWeekNumbers])
+
+  const [restrictMinimunDate, setrestrictMinimunDate] = React.useState(_pcfParameters.restrictMinimunDate.raw! == "true" ? true : false);
+  React.useEffect(() => {
+    setrestrictMinimunDate(_pcfParameters.restrictMinimunDate.raw! == "true" ? true : false);
+  }, [_pcfParameters.restrictMinimunDate])
+
+  const [restrictMaximunDate, setrestrictMaximunDate] = React.useState(_pcfParameters.restrictMaximunDate.raw! == "true" ? true : false);
+  React.useEffect(() => {
+    setrestrictMaximunDate(_pcfParameters.restrictMaximunDate.raw! == "true" ? true : false);
+  }, [_pcfParameters.restrictMaximunDate])
+
+  const [isDisabled, setisDisabled] = React.useState(_pcfContext.mode.isControlDisabled);
+  React.useEffect(() => {
+    setisDisabled(_pcfContext.mode.isControlDisabled);
+  }, [_pcfContext.mode.isControlDisabled])
 
   let _minDate: Date | undefined = undefined;
-  if (_pcfParameters.restrictMinimunDate.raw) {
+  if (restrictMinimunDate) {
     if (_pcfParameters.minDate.type == "Whole.None") {
       _minDate = addDays(new Date(Date.now()), _pcfParameters.minDate.raw!);
     }
@@ -38,7 +65,7 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
     }
   }
   let _maxDate: Date | undefined = undefined;
-  if (_pcfParameters.restrictMaximunDate.raw) {
+  if (restrictMaximunDate) {
     if (_pcfParameters.maxDate.type == "Whole.None") {
       _maxDate = addDays(new Date(Date.now()), _pcfParameters.maxDate.raw!);
     }
@@ -46,9 +73,6 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
       _maxDate = _pcfParameters.maxDate.raw!
     }
   }
-
-
-  const firstDayOfWeek = DayOfWeek.Monday;
 
   const DayPickerStrings: IDatePickerStrings = {
     months: _dateStrings.monthGenitiveNames,
@@ -64,27 +88,7 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
     isRequiredErrorMessage: "Field is required.",//_resources.getString("boundedDatePicker_labels_isRequiredErrorMessage").trim(),
     invalidInputErrorMessage: "Invalid date format.",//_resources.getString("boundedDatePicker_labels_invalidInputErrorMessage").trim(),
     isOutOfBoundsErrorMessage: `Select a valid date between  ${_minDate == undefined ? "No limit" : _minDate!?.toLocaleDateString()} - ${_maxDate == undefined ? "No limit" : _maxDate!?.toLocaleDateString()}`,
-
   };
-  const [showWeekNumbers, setshowWeekNumbers] = React.useState(_pcfParameters.showWeekNumbers.raw);
-  React.useEffect(() => {
-    setshowWeekNumbers(_pcfParameters.showWeekNumbers.raw);
-  }, [_pcfParameters.showWeekNumbers])
-
-  const [isReadOnly, setisReadOnly] = React.useState(_pcfContext.mode.isControlDisabled);
-  React.useEffect(() => {
-    setisDisabled(_pcfContext.mode.isControlDisabled);
-  }, [_pcfContext.mode.isControlDisabled])
-
-  const [date, setDate] = React.useState(props.date);
-  React.useEffect(() => {
-    setDate(_pcfParameters.date.raw!);
-  }, [_pcfParameters.date])
-
-  const [isDisabled, setisDisabled] = React.useState(_pcfParameters.showWeekNumbers.raw!);
-  React.useEffect(() => {
-    setisDisabled(_pcfParameters.showWeekNumbers.raw!);
-  }, [_pcfParameters.showWeekNumbers])
 
   return (
     <Stack horizontal horizontalAlign="center">
@@ -101,9 +105,9 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
           minDate={_minDate}
           maxDate={_maxDate}
           allowTextInput={false}
-          disabled={isReadOnly}
+          disabled={isDisabled}
           showWeekNumbers={showWeekNumbers}
-          onSelectDate={(date) => { setDate(date!); }}
+          onSelectDate={(_date) => { props.updateDate(_date!); }}
         />
       </Stack.Item>
       <Stack.Item>

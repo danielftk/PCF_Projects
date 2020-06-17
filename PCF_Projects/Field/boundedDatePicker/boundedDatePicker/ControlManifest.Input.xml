@@ -1,58 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest>
 	<!--
-		namespace			-> namespace (prototype) of the component, Only letters or numbers, Required
-		constructor			-> A method name of the Custome Component (index.ts), Required
-		control-type		-> Standard property, Optional
-		description-key		-> Localized string key-name for the description of the component, Optional
-		display-name-key	-> Localized string key-name for the description of the component, Required
-		preview-image		-> Image path that will be used on the customization screens to show a preview of the component, Optional
-		version				-> Defines the version of the component, Required
-
+	namespace			-> namespace (prototype) of the component, Only letters or numbers, Required
+	constructor			-> A method name of the Custome Component (index.ts), Required
+	control-type		-> Standard property, Optional
+	description-key		-> Localized string key-name for the description of the component, Optional
+	display-name-key	-> Localized string key-name for the description of the component, Required
+	preview-image		-> Image path that will be used on the customization screens to show a preview of the component, Optional
+	version				-> Defines the version of the component, Required
 	-->
-	<control 
-		namespace="ftk.PCFControls" 
-		constructor="boundedDatePicker" 
-		version="0.0.1" 
-		display-name-key="boundedDatePicker" 
-		description-key="boundedDatePicker description" 
-		control-type="standard"
-	>
+	<control namespace="ftk.PCFControls" constructor="boundedDatePicker" version="0.0.1" display-name-key="boundedDatePicker" description-key="boundedDatePicker description" control-type="standard">
 		<!--
-			name 				-> Name of the property, Required
-			display-name-key	-> Localized string key-name, Required
-			of-type				-> Defines the data type of the property, Optional 
-			of-type-group 		-> (Optional) Defines the data type-group of the property, Optional
-			usage 				-> Field (bound) or read-only values (input), Optional
-			required			-> Whether the property is required or not, Optional
-			description-key		-> Localized string key-name, Optional
-			default-value		-> The default value provided to the component. This attribute is only allowed on inputs, Optional
+		name 				-> Name of the property, Required
+		display-name-key	-> Localized string key-name, Required
+		of-type				-> Defines the data type of the property, Optional
+		of-type-group 		-> (Optional) Defines the data type-group of the property, Optional
+		usage 				-> Field (bound) or read-only values (input), Optional
+		required			-> Whether the property is required or not, Optional
+		description-key		-> Localized string key-name, Optional
+		default-value		-> The default value provided to the component. This attribute is only allowed on inputs, Optional
 		-->
-		<property 
-			name="date"
-			display-name-key="b_date" 
-			description-key="Property_Desc_Key" 
-			of-type="DateAndTime.DateOnly" 
-			usage="bound" 
-			required="true" 
-		/>
 		<type-group name="RestrictDate-Parameter">
 			<type>DateAndTime.DateOnly</type>
 			<type>Whole.None</type>
-		</type-group>			
-		<property 
-			name="showWeekNumbers" 
-			display-name-key="i_showWeekNumbers" 
-			description-key="Property_Desc_Key" 
-			of-type="TwoOptions" 
-			usage="input" 
-			required="true" 
-			default-value="0"
-		/>
-		<property name="restrictMinimunDate" display-name-key="i_restrictMinimunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="0"/>
-		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-01-01T15:00:00"/>
-		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" of-type="TwoOptions" usage="input" required="true" default-value="0"/>
-		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-12-30T15:00:00"/>
+		</type-group>
+		<property name="date" display-name-key="b_date" description-key="Property_Desc_Key" of-type="DateAndTime.DateOnly" usage="bound" required="true" />
+		<property name="showWeekNumbers" display-name-key="i_showWeekNumbers" description-key="Property_Desc_Key" usage="input" of-type="Enum" required="true">
+			<value name="Yes" display-name-key="CC_Enable_Filtering" description-key="CC_Enable_Filtering_Desc" default="true">true</value>
+			<value name="No" display-name-key="CC_Disable_Filtering" description-key="CC_Disable_Filtering_Desc">false</value>
+		</property>
+		<property name="restrictMinimunDate" display-name-key="i_restrictMinimunDate" description-key="Property_Desc_Key" usage="input" of-type="Enum" required="true">
+			<value name="Yes" display-name-key="CC_Enable_Filtering" description-key="CC_Enable_Filtering_Desc" default="true">true</value>
+			<value name="No" display-name-key="CC_Disable_Filtering" description-key="CC_Disable_Filtering_Desc">false</value>
+		</property>
+		<property name="restrictMaximunDate" display-name-key="i_restrictMaximunDate" description-key="Property_Desc_Key" usage="input" of-type="Enum" required="true">
+			<value name="Yes" display-name-key="CC_Enable_Filtering" description-key="CC_Enable_Filtering_Desc" default="true">true</value>
+			<value name="No" display-name-key="CC_Disable_Filtering" description-key="CC_Disable_Filtering_Desc">false</value>
+		</property>
+		<property name="minDate" display-name-key="i_mindate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-01-01T15:00:00" />
+		<property name="maxDate" display-name-key="i_maxdate" description-key="Property_Desc_Key" of-type-group="RestrictDate-Parameter" usage="input" required="false" default-value="2020-12-30T15:00:00" />
 		<resources>
 			<code path="index.ts" order="1" />
 		</resources>
