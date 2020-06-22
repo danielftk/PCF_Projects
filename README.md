@@ -48,7 +48,7 @@ boundedDatepicker es un componente personalizado (PCF) creado para permitir a lo
 ### English
 
 bounded
-boundedDatepicker es un componente personalizado (PCF) creado para permitir a los usuarios de Power Apps usar un selector de fechas con limites configurables haciendo uso del control datePicker de la librería [Fluent UI](https://developer.microsoft.com/es-ES/fluentui#/controls/web/datepicker)
+boundedDatepicker is a custom control (PCF) created to allow to the users of Power Apps to use a Date picker with configurable limits for the available minimun and maximun dates created using datepicker control from the [Fluent UI](https://developer.microsoft.com/es-ES/fluentui#/controls/web/datepicker)
 
 ### Properties
 |Name|Description|Example|
