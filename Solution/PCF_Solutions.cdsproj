@@ -42,6 +42,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PCF_Projects\Field\boundedDatePicker\SuperRepo.pcfproj" />
     <ProjectReference Include="..\PCF_Projects\Field\colorPicker\colorPicker.pcfproj" />
+    <ProjectReference Include="..\PCF_Projects\Field\datetimePicker\datetimePicker.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
