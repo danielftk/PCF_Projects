@@ -22,11 +22,10 @@ jobs:
         
       - id: checkpcfconfig
         run: |
-          get-childitem -path ./PCF_Projecs -include pcfconfig.json -recurse |
+          get-childitem -path ./PCF_Projects -include pcfconfig.json -recurse |
           Foreach-Object {
-          cd $_.FullName
-          echo $('$_.FullName')
-          npm ci
+              cd $_.DirectoryName
+              npm ci
           }
           Test-Path pcfconfig.json
           echo "::set-output name=exists::$(Test-Path pcfconfig.json)"
