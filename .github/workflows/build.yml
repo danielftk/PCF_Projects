@@ -20,8 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Collect PCF project locations
+      
+      - name: 'Collect PCF project locations'
       uses: featherweight-design/collect-directory-names-by-file-glob@71ba10822d14aa1a8d477040cd9f716487078b5b
       with:
         # A glob representing the file(s) for which to search
