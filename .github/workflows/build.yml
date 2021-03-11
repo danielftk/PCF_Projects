@@ -60,21 +60,18 @@ jobs:
         run: |
             msbuild /restore /t:rebuild
             msbuild /restore /t:rebuild /p:Configuration=Release
-      
       - name: Managed Solution Artifact ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_managed.zip
         if: steps.checkpcfconfig.outputs.exists == 'True'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_managed.zip
           path: ${{ steps.checkpcfconfig.outputs.buildtarget }}/bin/Release/${{ steps.solution-unique-name.outputs.info }}.zip
-
       - name: Unmanaged Solution Artifact ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_unmanaged.zip
         if: steps.checkpcfconfig.outputs.exists == 'True'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_unmanaged.zip
           path: ${{ steps.checkpcfconfig.outputs.buildtarget }}/bin/Debug/${{ steps.solution-unique-name.outputs.info }}.zip
-
       - name: Create Release ${{ steps.solution-unique-name.outputs.info }}_v${{ steps.solution-version.outputs.info }}
         id: create_release
         uses: actions/create-release@v1
@@ -86,7 +83,6 @@ jobs:
           release_name: ${{ steps.solution-unique-name.outputs.info }}_v${{ steps.solution-version.outputs.info }}
           draft: false
           prerelease: false
-
       - name: Upload Release Asset ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_managed.zip (Managed)
         id: release-managed-solution
         uses: actions/upload-release-asset@v1
@@ -98,7 +94,6 @@ jobs:
           asset_path: ${{ steps.checkpcfconfig.outputs.buildtarget }}/bin/Release/${{ steps.solution-unique-name.outputs.info }}.zip
           asset_name: ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_managed.zip
           asset_content_type: application/zip
-
       - name: Upload Release Asset ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_unmanaged.zip (Unmanaged)
         id: release-unmanaged-solution
         uses: actions/upload-release-asset@v1
