@@ -23,7 +23,7 @@ jobs:
               echo $_.DirectoryName
           }
           $solutionPath = $('${{ github.repository }}' -replace '${{ github.repository_owner }}/', '' -replace '[^a-zA-Z]', '')
-          echo "::set-output name=buildtarget::Solution/$solutionPath"
+          echo "::set-output name=buildtarget::Solution"
       - name: Use Node.js ${{ matrix.node-version }}
         if: steps.checkpcfconfig.outputs.exists == 'True'
         uses: actions/setup-node@v1
