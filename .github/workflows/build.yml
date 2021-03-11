@@ -3,9 +3,7 @@ name: build
 on:
   workflow_dispatch:
   push:
-    branches: [master]
-    tags:
-      - "v*" # Push events to matching v*, i.e. v1.0, v20.15.10
+    branches: [dev]
   pull_request:
     branches: [master]
 
