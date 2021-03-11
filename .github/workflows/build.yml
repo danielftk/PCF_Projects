@@ -58,7 +58,6 @@ jobs:
         if: steps.checkpcfconfig.outputs.exists == 'True'
         working-directory: ${{ steps.checkpcfconfig.outputs.buildtarget }}
         run: |
-            Set-MsBuildDevEnvironment
             msbuild /restore /t:rebuild
             msbuild /restore /t:rebuild /p:Configuration=Release
       - name: Managed Solution Artifact ${{ steps.solution-unique-name.outputs.info }}_${{ steps.solution-version.outputs.info }}_managed.zip
