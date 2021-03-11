@@ -25,8 +25,7 @@ jobs:
         run: |
           Test-Path pcfconfig.json
           echo "::set-output name=exists::true"
-          $solutionPath = $('${{ github.repository }}' -replace '${{ github.repository_owner }}/', '' -replace '[^a-zA-Z]', '')
-          echo "::set-output name=buildtarget::Solution/$solutionPath"
+          echo "::set-output name=buildtarget::Solution"
           
       - name: Use Node.js ${{ matrix.node-version }}
         if: steps.checkpcfconfig.outputs.exists == 'True'
