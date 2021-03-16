@@ -59,9 +59,9 @@ jobs:
         run: |
           get-childitem -path ./PCF_Projects -include pcfconfig.json -recurse |
           Foreach-Object {
-              echo $_.DirectoryName
-              cd $_.DirectoryName
-              npm ci
+            echo $_.DirectoryName
+            cd $_.DirectoryName
+            if (-not ( Test-Path node_modules )) { npm ci }
           }
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
