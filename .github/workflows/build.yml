@@ -43,6 +43,17 @@ jobs:
         with:
           xml-file: '${{ steps.checkpcfconfig.outputs.buildtarget }}/src/Other/Solution.xml'
           xpath: "//ImportExportXml/SolutionManifest/Version"
+      - name: Caching dependencies
+        uses: actions/cache@v2.1.4
+        with:
+          # A list of files, directories, and wildcard patterns to cache and restore
+          path: ./PCF_Projects/**/**/node_modules/
+          # An explicit key for restoring and saving the cache
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+          ${{ runner.os }}-
       - name: Install dependencies
         if: steps.checkpcfconfig.outputs.exists == 'True'
         run: |
