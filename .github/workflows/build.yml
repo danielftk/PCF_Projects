@@ -61,7 +61,7 @@ jobs:
           Foreach-Object {
             echo $_.DirectoryName
             cd $_.DirectoryName
-            if (-not ( Test-Path node_modules )) { npm ci }
+            npm install
           }
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
