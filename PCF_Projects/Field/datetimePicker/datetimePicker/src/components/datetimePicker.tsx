@@ -14,7 +14,6 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
     let _value: Date | null | string = _parameters.datetimeValue.raw;
     let _label = "Input value: " + _value + ". Is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm."
     let _error = true
-    let _width = _pcfContext.mode.allocatedWidth;
     try {
         _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 16);
         _error = false;
@@ -28,11 +27,11 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
             container: {
                 display: 'flex',
                 flexWrap: 'wrap',
-                width: _width,
+                width: '100%'
             },
             textField: {
                 minWidth: 250,
-                width: _width,
+                width: '100%'
             },
         }),
     );
@@ -56,7 +55,7 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
                 <TextField
                     id="datetime-local"
                     type="datetime-local"
-                    defaultValue={_value}
+                    value={_value}
                     error={_error}
                     onChange={(ev: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
                         _onChange(ev);
