@@ -3,8 +3,6 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { IInputs } from '../../generated/ManifestTypes';
 
-
-
 export interface Iprops {
     pcfContext: ComponentFramework.Context<IInputs>,
     onChange: (newValue: Date) => void
@@ -13,10 +11,18 @@ export interface Iprops {
 export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) => {
     let _pcfContext = props.pcfContext;
     let _parameters = _pcfContext.parameters
-    let _label = _parameters.controlLabel.raw!;
-    let _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 16);
+    let _value: Date | null | string = _parameters.datetimeValue.raw;
+    let _label = "Input value: " + _value + ". Is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm."
+    let _error = true
     let _width = _pcfContext.mode.allocatedWidth;
-
+    try {
+        _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 16);
+        _error = false;
+    }
+    catch (error) {
+        console.error("Error on parsing the input value as ISO datetime value: YYYY-MM-DDTHH:mm");
+        console.error(error);
+    }
     const useStyles = makeStyles((theme: Theme) =>
         createStyles({
             container: {
@@ -32,26 +38,38 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
     );
 
     const _onChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        props.onChange((event.target.value! as any ))
+        props.onChange((event.target.value! as any))
     }
 
     const classes = useStyles();
     return (
-        <form className={classes.container} noValidate>
-            <TextField
-                id="datetime-local"
-                type="datetime-local"
-                defaultValue={_value}
-                label={_label}
-                onChange={(ev: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-                    _onChange(ev);
-                }}
-                className={classes.textField}
-                InputLabelProps={{
-                    shrink: true
-                }}
-            />
-        </form>
+        <div>
+            {_error == true ?
+                <span
+                    style={{ color: 'red' }}
+                >
+                    {_label}
+                </span> :
+                null
+            }
+            <form className={classes.container} noValidate>
+                <TextField
+                    id="datetime-local"
+                    type="datetime-local"
+                    defaultValue={_value}
+                    error={_error}
+                    onChange={(ev: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+                        _onChange(ev);
+                    }}
+                    className={classes.textField}
+                    InputLabelProps={{
+                        shrink: true
+                    }}
+                />
+            </form>
+        </div>
+
+
     );
 };
 
