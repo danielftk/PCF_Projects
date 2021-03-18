@@ -12,14 +12,13 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
     let _pcfContext = props.pcfContext;
     let _parameters = _pcfContext.parameters;
     let _value: Date | null | string = _parameters.datetimeValue.raw;
-    let _label = "Input value: " + _value + ". Is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm.";
+    let _label = _pcfContext.resources.getString("datetimePicker_label_error_datetimeFormat");
     let _error = true;
     try {
-        _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 16);
+        _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 23);
         _error = false;
     }
     catch (error) {
-        console.error("Error on parsing the input value as ISO datetime value: YYYY-MM-DDTHH:mm");
         console.error(error);
     }
     const useStyles = makeStyles((theme: Theme) =>
@@ -31,18 +30,18 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
             },
             textField: {
                 minWidth: 250,
-                width: '100%'
+                width: '100%',
+                height: 400
             },
         }),
     );
     const classes = useStyles();
-    
+
     const _onChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         try {
-            let _newValue: Date = new Date(event.target.value!)
+            let _newValue: Date = new Date((event.target as any).valueAsNumber);
             props.onChange(_newValue);
         } catch (error) {
-            console.error("Error on parsing the input value Date value");
             console.error(error);
         }
     }

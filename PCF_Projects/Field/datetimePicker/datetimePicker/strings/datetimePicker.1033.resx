@@ -141,4 +141,8 @@
     <value>input property for set the label for this control</value>
     <comment/>
   </data>
+  <data name="datetimePicker_label_error_datetimeFormat" xml:space="preserve">
+    <value>Input value is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm:ss</value>
+    <comment/>
+  </data>
 </root>
