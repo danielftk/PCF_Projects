@@ -10,10 +10,10 @@ export interface Iprops {
 
 export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) => {
     let _pcfContext = props.pcfContext;
-    let _parameters = _pcfContext.parameters
+    let _parameters = _pcfContext.parameters;
     let _value: Date | null | string = _parameters.datetimeValue.raw;
-    let _label = "Input value: " + _value + ". Is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm."
-    let _error = true
+    let _label = "Input value: " + _value + ". Is not in the correct ISO datetime format: YYYY-MM-DDTHH:mm.";
+    let _error = true;
     try {
         _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 16);
         _error = false;
@@ -35,12 +35,19 @@ export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) 
             },
         }),
     );
-
+    const classes = useStyles();
+    
     const _onChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-        props.onChange((event.target.value! as any))
+        try {
+            let _newValue: Date = new Date(event.target.value!)
+            props.onChange(_newValue);
+        } catch (error) {
+            console.error("Error on parsing the input value Date value");
+            console.error(error);
+        }
     }
 
-    const classes = useStyles();
+
     return (
         <div>
             {_error == true ?
