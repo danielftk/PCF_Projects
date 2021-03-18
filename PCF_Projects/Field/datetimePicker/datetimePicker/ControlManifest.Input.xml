@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <manifest>
-  <control namespace="ftk.customControls" constructor="datetimePicker" version="0.0.2" display-name-key="Control_Display_Name_Key" description-key="Control_Description_Key" control-type="standard">
+  <control namespace="ftk.customControls" constructor="datetimePicker" version="0.0.3" display-name-key="Control_Display_Name_Key" description-key="Control_Description_Key" control-type="standard">
     <property name="datetimeValue" display-name-key="datetimeValue_Property_Display_Name_Key" description-key="datetimeValue_Property_Description_Key" of-type="DateAndTime.DateAndTime" usage="bound" required="true"/>
     <resources>
       <code path="index.ts" order="1"/>
