@@ -10,15 +10,17 @@ export interface Iprops {
 
 export const datetimePickerComponent: React.FunctionComponent<Iprops> = (props) => {
     let _pcfContext = props.pcfContext;
-    let _parameters = _pcfContext.parameters;
-    let _value: Date | null | string = _parameters.datetimeValue.raw;
+    let _value: Date | null | string = "";
     let _label = _pcfContext.resources.getString("datetimePicker_label_error_datetimeFormat");
-    let _error = true;
+    let _error: undefined | boolean;
+
     try {
-        _value = (_parameters.datetimeValue.raw! as Date).toISOString().slice(0, 23);
+        let _datetimeValue = _pcfContext.parameters.datetimeValue.raw!;
+        _value = _datetimeValue.toISOString().slice(0, 23);
         _error = false;
     }
     catch (error) {
+        _error = true
         console.error(error);
     }
     const useStyles = makeStyles((theme: Theme) =>
