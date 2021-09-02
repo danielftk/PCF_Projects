@@ -17,11 +17,10 @@
   </PropertyGroup>
 
   <!-- Solution Packager overrides, un-comment to use: SolutionPackagerType (Managed, Unmanaged, Both)
- 
-  -->
-   <PropertyGroup>
+  <PropertyGroup>
     <SolutionPackageType>Managed</SolutionPackageType>
   </PropertyGroup>
+  -->
   
   <ItemGroup>
     <PackageReference Include="Microsoft.PowerApps.MSBuild.Solution" Version="1.*" />
@@ -45,6 +44,8 @@
   
   <ItemGroup>
     <ProjectReference Include="..\PCF_Projects\Field\boundedDatePicker\SuperRepo.pcfproj" />
+    <ProjectReference Include="..\PCF_Projects\Field\colorPicker\colorPicker.pcfproj" />
+    <ProjectReference Include="..\PCF_Projects\Field\datetimePicker\datetimePicker.pcfproj" />
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
