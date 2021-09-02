@@ -108,6 +108,11 @@ export const BoundedDatePicker: React.FC<Iprops> = (props) => {
           disabled={isDisabled}
           showWeekNumbers={showWeekNumbers}
           onSelectDate={(_date) => { props.updateDate(_date!); }}
+          formatDate={date =>
+            `${date?.toLocaleDateString(
+              navigator.languages && navigator.languages[0]
+            )}`
+          }
         />
       </Stack.Item>
       <Stack.Item>
